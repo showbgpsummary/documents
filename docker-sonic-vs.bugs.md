@@ -537,13 +537,13 @@ PING 172.20.20.5 (172.20.20.5) 56(84) bytes of data.
 (some deployements it show the interfaces,sometimes don't.)
     ```
 2. **SSH is failed on boot,starts on a simple service ssh restart**
-Whenever you deploy the container and check service status of ssh,it's failed.It needs a basic restart to run.It's out of scope for me.
+Whenever you deploy the container and check service status of ssh,it's failed.It needs a basic restart to run.
 
 
 ---
 **Update: Root Cause Analysis (Confirmed Race Condition)**
 
-Detailed syslog analysis confirms that the issue is a definitive **race condition** rooted in the microservice startup timing:
+Detailed syslog analysis raises the possibility that the issue is a **race condition** rooted in the microservice startup timing:
 
 **Analysis Details:**
 Syslogs show that the issue originates within a critical 1-second window during service initialization:
